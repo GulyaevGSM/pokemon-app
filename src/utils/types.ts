@@ -14,10 +14,10 @@ export type PokemonList = Pokemon[];
 export type PokemonPopupProps = {
     isOpen: boolean;
     onClose: () => void;
-    pokemon: Pokemon; // Укажите тип для параметра pokemon
+    pokemon: Pokemon;
 };
 
 export type PokemonDetailPageProps = {
-    pokemon?: Pokemon;
+    pokemon?: Pokemon
 };
 
