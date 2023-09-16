@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Button } from "@chakra-ui/react";
 import PokemonPopup from "../components/PokemonPopup.tsx";
-import {Pokemon, PokemonList} from "../utils/types.ts"; // Можете использовать обычную кнопку
+import {Pokemon, PokemonList} from "../utils/types.ts";
 
 function HomePage() {
     const [pokemonList, setPokemonList] = useState<PokemonList>([]);
@@ -20,7 +20,7 @@ function HomePage() {
                 );
             })
             .then((pokemonData) => {
-                let sortedPokemon = [...pokemonData];
+                let sortedPokemon = [...pokemonData]
                 sortedPokemon.sort((a, b) => {
                     const aProperty = a.data[sortBy];
                     const bProperty = b.data[sortBy];
