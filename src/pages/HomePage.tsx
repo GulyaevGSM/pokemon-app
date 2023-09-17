@@ -3,6 +3,7 @@ import axios from "axios";
 import { Button } from "@chakra-ui/react";
 import PokemonPopup from "../components/PokemonPopup.tsx";
 import {Pokemon, PokemonList} from "../utils/types.ts";
+import {ButtonContainer, PokemonCard, PokemonListCards} from "../styles.tsx";
 
 function HomePage() {
     const [pokemonList, setPokemonList] = useState<PokemonList>([]);
@@ -61,7 +62,7 @@ function HomePage() {
                 textAlign: 'center',
                 margin: 20
             }}>Pokemon List</h1>
-            <div className="button-container">
+            <ButtonContainer>
                 <Button colorScheme="blue" onClick={() => setSortBy("weight")}>
                     По Весу
                 </Button>
@@ -71,20 +72,20 @@ function HomePage() {
                 <Button colorScheme="blue" onClick={toggleSortDirection}>
                     {sortDirection === "asc" ? "По возрастанию" : "По убыванию"}
                 </Button>
-            </div>
-            <ul className="pokemon-list">
+            </ButtonContainer>
+            <PokemonListCards>
                 {pokemonList.map((pokemon) => (
                     <li key={pokemon.name}>
-                        <div className="pokemon-card" onClick={() => handlePokemonClick(pokemon)}>
+                        <PokemonCard onClick={() => handlePokemonClick(pokemon)}>
                             <img
                                 src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png`}
                                     alt={pokemon.name}
                             />
                             <p>{pokemon.name}</p>
-                        </div>
+                        </PokemonCard>
                     </li>
                 ))}
-            </ul>
+            </PokemonListCards>
             {selectedPokemon && <PokemonPopup isOpen={true} pokemon={selectedPokemon} onClose={() => setSelectedPokemon(null)} />}
         </div>
     );

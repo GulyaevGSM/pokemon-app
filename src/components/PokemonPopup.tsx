@@ -1,6 +1,7 @@
 import { useState } from "react";
 import PokemonDetailPage from "./PokemonDetailPage.tsx";
 import {PokemonPopupProps} from "../utils/types.ts";
+import {Close, PopupContent} from "../styles.tsx";
 
 function PokemonPopup({ pokemon, onClose }: PokemonPopupProps) {
     const [isOpen, setIsOpen] = useState(true);
@@ -12,12 +13,12 @@ function PokemonPopup({ pokemon, onClose }: PokemonPopupProps) {
 
     return (
         <div className={`popup ${isOpen ? "active" : ""}`}>
-            <div className="popup-content">
-                <span className="close" onClick={handleClose}>
+            <PopupContent>
+                <Close onClick={handleClose}>
                   &times;
-                </span>
+                </Close>
                 <PokemonDetailPage pokemon={pokemon} />
-            </div>
+            </PopupContent>
         </div>
     );
 }
